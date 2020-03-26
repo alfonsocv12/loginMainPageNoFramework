@@ -80,7 +80,7 @@
           ->query("call $call($params)")
           ->fetch_object();
       } catch {
-        return
+        
       }
     }
 
