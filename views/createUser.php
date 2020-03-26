@@ -6,9 +6,10 @@
   <body>
     <form class="" action="/router.php" method="post">
       <h2> sign up </h2>
-      <input type="text" name="name"
-             pattern="[a-Z0-9]+" maxlength="18"
-             placeholder="user name" required="required"/>
+      <input type="text" name="email"
+             pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+             maxlength="18" placeholder="email"
+             required="required"/>
       <input type="password" name="password"
              required="required" placeholder="password">
       <input type="password" name="confirm_password"

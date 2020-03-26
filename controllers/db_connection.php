@@ -57,7 +57,7 @@
       $i = 0;
       $whereString = "";
       foreach ($this->query_json["where"] as $entrance) {
-        if ($i > 1){
+        if ($i > 0){
           $whereString .= " and "
             .$entrance["column"]." ".$entrance["statement"]
             ." ".$entrance["value"];
@@ -70,6 +70,32 @@
       }
       $this->query_json["where"] = [];
       return $whereString;
+    }
+
+    public function storeProcedure($call, $params_array){
+      $params = $this->transformParams($params_array);
+      echo "call $call($params)";
+      try {
+        return $this->connection
+          ->query("call $call($params)")
+          ->fetch_object();
+      } catch {
+        return
+      }
+    }
+
+    private function transformParams($params_array) {
+      $i = 0;
+      $string_params = "";
+      foreach ($params_array as $param) {
+        if($i > 0){
+          $string_params .= ", \"$param\"";
+        }else{
+          $string_params = "\"$param\"";
+          $i ++;
+        }
+      }
+      return $string_params;
     }
 
     public function rawQuery($query) {

@@ -16,8 +16,21 @@
 
     }
 
-    public function signUp() {
-      echo "Aqui se inicia la session";
+    public function signUp($params) {
+      if($params['password'] == $params['confirm_password']){
+        $user = $this->db
+          ->storeProcedure("ctrol51UserSp",
+            [$params["email"], $params["password"]]
+          );
+        return array(
+            "uri" => "views/main.php"
+        );
+      }else{
+        echo "No considen las contraseñas";
+        return array(
+          "uri" => "views/error"
+        );
+      }
     }
 
     public function showUsers() {
