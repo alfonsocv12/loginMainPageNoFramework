@@ -12,8 +12,29 @@
       $this->db = new DbConnetion();
     }
 
-    public function login() {
+    public function login($params) {
+      $response = $this->db->storeProcedure("login_ctrol51",
+        [$params["email"], $params["password"]]);
+      if(!$response['email']){
+        return array(
+          "uri" => "views/error",
+          "params" => array(
+            "code" => 400,
+            "message" => "No se puedo iniciar sesion"
+          )
+        );
+      }
+      $this->saveSession($response);
+      return array(
+        "uri" => "views/main"
+      );
+    }
 
+    private function saveSession($response){
+      ini_set('session.use_only_cookies', true);
+      session_start();
+      $_SESSION['user'] = $response['email'];
+      $_SESSION['JALA?'] = "SI";
     }
 
     public function signUp($params) {

@@ -50,7 +50,7 @@
       $statement = $this->whereArrayToString();
       return $this->connection->query("
         select $select from $table $statement
-      ")->fetch_object();
+      ")->fetch_array();
     }
 
     private function whereArrayToString(){
@@ -74,11 +74,10 @@
 
     public function storeProcedure($call, $params_array){
       $params = $this->transformParams($params_array);
-      echo "call $call($params)";
       try {
         return $this->connection
           ->query("call $call($params)")
-          ->fetch_object();
+          ->fetch_array();
       } catch (Exception $e) {
         return array(
           "error" => "404",
@@ -102,7 +101,9 @@
     }
 
     public function rawQuery($query) {
-      return $this->connection->query($query);
+      return $this->connection
+        ->query($query)
+        ->fetch_array();
     }
   }
 

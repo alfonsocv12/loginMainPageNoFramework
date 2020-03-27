@@ -4,18 +4,18 @@
     <title></title>
   </head>
   <body>
-    <form class="" action="router.php" method="/login">
+    <form class="" action="router.php" method="/sign_in">
       <h2>
         Sign in
       </h2>
       <span class="entypo-user inputUserIcon">
          <i class="fa fa-user"></i>
       </span>
-      <input type="text" class="user" name="name"
+      <input type="text" class="email" name="email"
              autofocus="autofocus"
              pattern="[a-Z0-9]+"
              maxlength="18"
-             placeholder="Usuario"
+             placeholder="Email"
              required="required"/>
       <span class="entypo-key inputPassIcon">
          <i class="fa fa-key"></i>

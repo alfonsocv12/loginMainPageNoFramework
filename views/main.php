@@ -6,5 +6,11 @@
   </head>
   <body>
     Entro a main
+    <br>
+    <?php
+      session_start();
+      echo $_SESSION['user']."<br>";
+      echo $_SESSION['JALA?'];
+    ?>
   </body>
 </html>
