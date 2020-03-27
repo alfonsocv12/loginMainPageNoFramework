@@ -1,9 +1,9 @@
 <?php
-
+  include "base_controller.php";
   /**
    *This class controlls all user data
    */
-  class UserController {
+  class UserController extends BaseController{
 
     public $db;
 
@@ -15,18 +15,10 @@
       $response = $this->db->storeProcedure("login_ctrol51",
         [$params["email"], $params["password"]]);
       if(!$response['email']){
-        return array(
-          "uri" => "views/error",
-          "params" => array(
-            "code" => 400,
-            "message" => "No se puedo iniciar sesion"
-          )
-        );
+        $this->abortError(400, "No se puedo iniciar sesion");
       }
       $this->saveSession($response);
-      return array(
-        "uri" => "views/main"
-      );
+      $this->redirect("views/main");
     }
 
     private function saveSession($response){
@@ -40,13 +32,7 @@
       if($params['password'] == $params['confirm_password']){
         return $this->callSignUpProcedure($params);
       }else{
-        return array(
-          "uri" => "views/error",
-          "params" => array(
-            "code" => 400,
-            "message" => "Las contraseñas no son iguales"
-          )
-        );
+        $this->abortError(400, "Las contraseñas no son iguales");
       }
     }
 
@@ -57,14 +43,9 @@
         );
 
       if($user["error"]){
-        return array(
-          "uri" => "view/error",
-          "params" => $user
-        );
+        $this->redirect("view/error", $user);
       }
-      return array(
-        "uri" => "view/main"
-      );
+      $this->redirect("view/main");
     }
 
     public function showUsers() {

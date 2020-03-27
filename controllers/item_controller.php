@@ -10,9 +10,9 @@ class ItemController {
 
   public function createItem($params){
 
-    return array(
-      "uri" => "views/main"
-    );
+    // return array(
+    //   "uri" => "views/main"
+    // );
   }
 }
 

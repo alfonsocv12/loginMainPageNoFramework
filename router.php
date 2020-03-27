@@ -13,18 +13,17 @@
 
   switch ($uri) {
     case '/sign_in':
-      $redirect = $user_controller->login($_REQUEST);
+      $user_controller->login($_REQUEST);
       break;
     case '/sign_up':
-      $redirect = $user_controller->signUp($_REQUEST);
+      $user_controller->signUp($_REQUEST);
       break;
     case '/create_item':
-      $redirect = $item_controller->createItem($_REQUEST);
+      $item_controller->createItem($_REQUEST);
       break;
     default:
-      echo "TAS MAL\n $uri";
+      $base_controller->abortError(404, "Not Found");
       break;
   }
-  $base_controller->redirect($redirect['uri'], $redirect['params']);
   exit();
 ?>

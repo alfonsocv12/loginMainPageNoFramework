@@ -18,6 +18,13 @@
       header($header);
     }
 
+    public function abortError($code, $message){
+      redirect("views/error.php", array(
+        "code" => $code,
+        "message" => $message
+      ));
+    }
+
     private function paramArrayToString($params){
       $i = 0;
       $paramString = "";
