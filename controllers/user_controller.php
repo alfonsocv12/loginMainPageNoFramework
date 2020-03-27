@@ -13,7 +13,7 @@
 
     public function login($params) {
       $response = $this->db->storeProcedure("login_ctrol51",
-        [$params["email"], $params["password"]]);
+        [$params["email"], $params["password"], $params["hash_key"]]);
       if(!$response['email']){
         $this->abortError(400, "No se puedo iniciar sesion");
       }
@@ -39,13 +39,13 @@
     private function callSignUpProcedure($params){
       $user = $this->db
         ->storeProcedure("ctrol51UserSp",
-          [$params["email"], $params["password"]]
+          [$params["email"], $params["password"], $params['hash_key']]
         );
 
       if($user["error"]){
-        $this->redirect("view/error", $user);
+        $this->redirect("views/error", $user);
       }
-      $this->redirect("view/main");
+      $this->redirect("views/main");
     }
 
     public function showUsers() {

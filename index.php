@@ -17,18 +17,18 @@
       <span class="entypo-user inputUserIcon">
          <i class="fa fa-user"></i>
       </span>
-      <input type="text" class="email" name="email"
-             autofocus="autofocus"
-             pattern="[a-Z0-9]+"
-             maxlength="18"
-             placeholder="Email"
-             required="required"/>
+      <input type="text" name="email"
+             pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+             maxlength="28" autofocus="autofocus"
+             placeholder="Email" required="required"/>
       <span class="entypo-key inputPassIcon">
          <i class="fa fa-key"></i>
        </span>
       <input type="password" class="pass" name="password"
              required="required"
              placeholder="Contraseña"/>
+      <input type="password" name="hash_key"
+             placeholder="hash_key" required="required">
       <input type="hidden"
              name="intentos"/>
       <input id="uriPage" name="uriPage" type="hidden" value="/sign_in"/>
