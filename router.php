@@ -19,6 +19,12 @@
     case '/create_item':
       $item_controller->createItem($_REQUEST);
       break;
+    case '/edit_item':
+      $item_controller->updateItem($_REQUEST);
+      break;
+    case '/delete_item':
+      $item_controller->deleteItem($_REQUEST);
+      break;
     default:
       $user_controller->abortError(404, "Not Found");
       break;

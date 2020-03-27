@@ -19,8 +19,12 @@
         ) or die("Connect failed");
     }
 
-    public function works(){
-      echo "smn";
+    public function resetBaseJson(){
+      $this->query_json = array(
+        "select"=>"*",
+        "where" =>[],
+        "from" => "",
+      );
     }
 
     public function table($table){
@@ -48,6 +52,7 @@
       $select = $this->query_json["select"];
       $table = $this->query_json["table"];
       $statement = $this->whereArrayToString();
+      $this->resetBaseJson();
       return $this->connection->query("
         select $select from $table $statement
       ");
@@ -83,6 +88,13 @@
       }
       $this->query_json["where"] = [];
       return $whereString;
+    }
+
+    public function delete($id){
+      $table = $this->query_json["table"];
+      $this->resetBaseJson();
+      return $this->connection->query("
+        delete FROM $table WHERE (`id` = '$id');");
     }
 
     public function storeProcedure($call, $params_array){
