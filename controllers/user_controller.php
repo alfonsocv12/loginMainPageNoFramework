@@ -1,5 +1,4 @@
 <?php
-  include "db_connection.php";
 
   /**
    *This class controlls all user data
@@ -8,8 +7,8 @@
 
     public $db;
 
-    function __construct() {
-      $this->db = new DbConnetion();
+    function __construct($db) {
+      $this->db = $db;
     }
 
     public function login($params) {

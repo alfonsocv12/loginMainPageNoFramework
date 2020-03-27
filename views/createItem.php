@@ -5,8 +5,14 @@
     <title></title>
   </head>
   <body>
-    <form class="" action="index.html" method="post">
-
+    <form class="" action="router.php" method="post">
+      <input type="text" name="name"
+             placeholder="nombre">
+      <input type="text" name="descripcion"
+             placeholder="descripcion">
+      <input type="hidden" name="uriPage"
+             id="uriPage" value="/create_item">
+      <button type="btnSubmit" value=""="button">Submit</button>
     </form>
   </body>
 </html>
