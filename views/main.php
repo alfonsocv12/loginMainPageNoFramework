@@ -9,7 +9,7 @@
     <br>
     <?php
       include "../controllers/db_connection.php";
-      $db = new DbConnetion();
+      $db = new DbConnection();
       session_start();
       $user = $_SESSION['user'];
       if($user){

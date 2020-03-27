@@ -8,7 +8,7 @@
     Item
     <?php
       include "../controllers/db_connection.php";
-      $db = new DbConnetion();
+      $db = new DbConnection();
 
       $id = $_REQUEST['id'];
 

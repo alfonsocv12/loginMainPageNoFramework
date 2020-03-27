@@ -29,7 +29,7 @@ class ItemController extends BaseController{
       WHERE (id = $id)");
     $this->redirect("views/main");
   }
-
+  
   public function deleteItem($params){
     $this->db->table("items_ctrol51")
       ->delete($params['id']);

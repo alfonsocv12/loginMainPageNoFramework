@@ -2,7 +2,7 @@
   /**
    * db Connection
    */
-  class DbConnetion {
+  class DbConnection {
     public $connection;
     public $query_json = array(
       "select"=>"*",

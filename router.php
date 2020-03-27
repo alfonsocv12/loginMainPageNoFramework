@@ -3,7 +3,7 @@
   include "controllers/item_controller.php";
   include "controllers/db_connection.php";
 
-  $db = new DbConnetion();
+  $db = new DbConnection();
   $user_controller = new UserController($db);
   $item_controller = new ItemController($db);
 
