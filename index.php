@@ -3,6 +3,12 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  <?php
+    session_start();
+    $_SESSION = array();
+    session_unset();
+    session_destroy();
+  ?>
   <body>
     <form class="" action="router.php" method="/sign_in">
       <h2>

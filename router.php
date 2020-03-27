@@ -1,6 +1,7 @@
 <?php
-  require_once "controllers/user_controller.php";
+  include "controllers/user_controller.php";
   include "controllers/base_controller.php";
+  include "controllers/item_controller.php";
 
   $user_controller = new UserController();
   $base_controller = new BaseController();
@@ -14,8 +15,8 @@
     case '/sign_up':
       $redirect = $user_controller->signUp($_REQUEST);
       break;
-    case '/add_preference':
-      // code...
+    case '/create_item':
+      $redirect =
       break;
     default:
       echo "TAS MAL\n $uri";

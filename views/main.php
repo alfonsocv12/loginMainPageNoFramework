@@ -8,9 +8,17 @@
     Entro a main
     <br>
     <?php
+      include "../controllers/db_connection.php";
+      $db = new DbConnetion();
       session_start();
-      echo $_SESSION['user']."<br>";
-      echo $_SESSION['JALA?'];
+      $user = $_SESSION['user'];
+      if($user){
+        // $db->
+      }else{
+        header("Location: /");
+      }
     ?>
+    <button onclick="window.location.href = '/views/createItem.php';">
+      Crear item</button>
   </body>
 </html>
