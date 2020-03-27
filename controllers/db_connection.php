@@ -79,8 +79,11 @@
         return $this->connection
           ->query("call $call($params)")
           ->fetch_object();
-      } catch {
-        
+      } catch (Exception $e) {
+        return array(
+          "error" => "404",
+          "msg" => "Error caling the store procedure"
+        );
       }
     }
 

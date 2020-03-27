@@ -18,19 +18,33 @@
 
     public function signUp($params) {
       if($params['password'] == $params['confirm_password']){
-        $user = $this->db
-          ->storeProcedure("ctrol51UserSp",
-            [$params["email"], $params["password"]]
-          );
-        return array(
-            "uri" => "views/main.php"
-        );
+        return $this->callSignUpProcedure($params);
       }else{
-        echo "No considen las contraseñas";
         return array(
-          "uri" => "views/error"
+          "uri" => "views/error",
+          "params" => array(
+            "code" => 400,
+            "message" => "Las contraseñas no son iguales"
+          )
         );
       }
+    }
+
+    private function callSignUpProcedure($params){
+      $user = $this->db
+        ->storeProcedure("ctrol51UserSp",
+          [$params["email"], $params["password"]]
+        );
+
+      if($user["error"]){
+        return array(
+          "uri" => "view/error",
+          "params" => $user
+        );
+      }
+      return array(
+        "uri" => "view/main"
+      );
     }
 
     public function showUsers() {

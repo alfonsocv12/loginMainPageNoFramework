@@ -1,7 +1,9 @@
 <?php
   require_once "controllers/user_controller.php";
+  include "controllers/base_controller.php";
 
   $user_controller = new UserController();
+  $base_controller = new BaseController();
 
   $uri = $_REQUEST['uriPage'];
 
@@ -19,4 +21,6 @@
       echo "TAS MAL\n $uri";
       break;
   }
+  $base_controller->redirect($redirect['uri'], $redirect['params']);
+  exit();
 ?>
