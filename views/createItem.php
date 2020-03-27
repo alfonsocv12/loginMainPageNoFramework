@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    <form class="" action="router.php" method="post">
+    <form class="" action="/router.php" method="post">
       <input type="text" name="name"
              placeholder="nombre">
       <input type="text" name="descripcion"

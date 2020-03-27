@@ -5,7 +5,7 @@
   class DbConnetion {
     public $connection;
     public $query_json = array(
-      "select"=>"",
+      "select"=>"*",
       "where" =>[],
       "from" => "",
     );
@@ -50,7 +50,20 @@
       $statement = $this->whereArrayToString();
       return $this->connection->query("
         select $select from $table $statement
-      ")->fetch_array();
+      ");
+    }
+
+    public function first() {
+      return $this->get()->fetch_array();
+    }
+
+    public function find($value){
+      $this->query_json["where"] = [array(
+        "column" => "id",
+        "statement" => "=",
+        "value" => $value
+      )];
+      return $this->first();
     }
 
     private function whereArrayToString(){
@@ -102,8 +115,7 @@
 
     public function rawQuery($query) {
       return $this->connection
-        ->query($query)
-        ->fetch_array();
+        ->query($query);
     }
   }
 
